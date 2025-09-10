@@ -9,8 +9,8 @@ source as (
 renamed as (
 
     select
-        * except(pdt_id, products_id),
-    case when products_id is not null then products_id else pdt_id end as products_id
+        * except(pdt_id),
+        pdt_id AS product_id
 
     from source
 
