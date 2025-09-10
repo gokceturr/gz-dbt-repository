@@ -15,7 +15,7 @@ sources:
             description: price of the purchase
             tests:
               - not_null
-              - unique
+            
            
             
       - name: sales
@@ -50,6 +50,6 @@ sources:
             description: cost of ship
             tests:
               - not_null
-              - unique
+             
           
              
