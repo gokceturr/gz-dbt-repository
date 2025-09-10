@@ -16,4 +16,11 @@ renamed as (
 
 )
 
+final as (
+  select
+    *,
+    concat(cast(orders_id as string), '-', cast(products_id as string)) as pk_sales
+  from renamed
+)
+
 select * from renamed
