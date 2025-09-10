@@ -10,7 +10,7 @@ renamed as (
 
     select
         * except(pdt_id),
-        pdt_id AS product_id
+        pdt_id AS products_id
 
     from source
 
@@ -23,4 +23,4 @@ final as (
   from renamed
 )
 
-select * from renamed
+select * from final;
