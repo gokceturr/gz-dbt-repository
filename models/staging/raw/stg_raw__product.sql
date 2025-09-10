@@ -9,7 +9,7 @@ source as (
 renamed as (
 
   select
-    *,   
+    * except(purchse_price),   
     safe_cast(purchse_price as float64) as purchase_price
     from source
 
