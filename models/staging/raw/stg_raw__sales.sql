@@ -9,11 +9,8 @@ source as (
 renamed as (
 
     select
-        date_date,
-        orders_id,
-        pdt_id,
-        revenue,
-        quantity
+        * except(pdt_id, products_id),
+    case when products_id is not null then products_id else pdt_id end as products_id
 
     from source
 
