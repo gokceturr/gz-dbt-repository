@@ -13,6 +13,9 @@ sources:
             description: id of the product
           - name: purchse_price
             description: price of the purchase
+            tests:
+              - not_null
+              - unique
            
             
       - name: sales
@@ -45,5 +48,8 @@ sources:
             description: fee of shipping
           - name: ship_cost
             description: cost of ship
+            tests:
+              - not_null
+              - unique
           
              
