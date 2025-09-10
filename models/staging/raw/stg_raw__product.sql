@@ -9,8 +9,7 @@ source as (
 renamed as (
 
     select
-        products_id,
-        purchse_price,
+          * except(pdt_id, purchse_price),
         pdt_id AS products_id
         purchase_price AS purchase_price
         SAFE_CAST(purchase_price AS FLOAT )
