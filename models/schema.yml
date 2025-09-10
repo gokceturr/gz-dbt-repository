@@ -7,7 +7,35 @@ sources:
     tables:
       - name: product
         identifier: raw_gz_product
+        description: products of green weez
+        columns:
+          - name: products_id
+            description: id of the product
+          - name: purchase_price
+            description: price of the purchase  
       - name: sales
         identifier: raw_gz_sales
+        description: sales of green weez
+        columns:
+          - name: date_date
+            description: date of sales
+          - name: orders_id
+            description: id of order
+          - name: revenue
+            description: revenue of sale
+          - name: quantity
+            description: quantity of sale 
+          - name: product_id
+            description: id of product        
       - name: ship
         identifier: raw_gz_ship
+        description: shipping datas
+        columns:
+          - name: orders_id
+            description: id of order
+          - name: logCost
+            description: cost of logistic
+          - name: shipping_fee
+            description: fee of shipping
+          - name: ship_cost
+            description: cost of ship      
