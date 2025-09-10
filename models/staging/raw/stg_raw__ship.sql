@@ -19,9 +19,9 @@ renamed as (
       else null
     end as shipping_fee,
 
-    -- ship_cost'u sayıya çevir (sembol/boşluk varsa temizle)
-    SAFE_CAST(REGEXP_REPLACE(CAST(ship_cost AS STRING), r'[^0-9.\-]', '') AS FLOAT64) as ship_cost
-  from source
+   
+    CAST(ship_cost AS STRING) as ship_cost
+  
        
 
     from source
