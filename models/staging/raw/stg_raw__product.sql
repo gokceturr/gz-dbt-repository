@@ -10,10 +10,7 @@ renamed as (
 
   select
     *,   
-       case
-      when products_id is not null then products_id
-      else pdt_id
-    end as products_id
+    safe_cast(purchse_price as float64) as purchase_price
     from source
 
 )
