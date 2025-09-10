@@ -1,26 +1,14 @@
-with 
-
+with
 source as (
-
-    select * from {{ source('raw', 'sales') }}
-
+  select * from {{ source('raw','sales') }}
 ),
-
 renamed as (
-
-    select
-        * except(pdt_id),
-        pdt_id AS products_id
-
-    from source
-
-)
-
-final as (
   select
-    *,
-    concat(cast(orders_id as string), '-', cast(products_id as string)) as pk_sales
-  from renamed
+    * except(pdt_id),       
+    pdt_id as products_id     
+  from source
 )
-
-select * from final;
+select
+  renamed.*,
+  concat(cast(orders_id as string), '-', cast(products_id as string)) as pk_sales
+from renamed
