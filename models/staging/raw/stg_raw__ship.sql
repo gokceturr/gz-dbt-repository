@@ -9,7 +9,7 @@ source as (
 renamed as (
 
     select
-        * except(shipping_fee, shipping_fee_1, ship_cost)
+        * except(shipping_fee, shipping_fee_1, ship_cost),
 
         case
       when safe_cast(shipping_fee   as float64) is not null then safe_cast(shipping_fee   as float64)
