@@ -13,6 +13,9 @@ sources:
             description: id of the product
           - name: purchase_price
             description: price of the purchase  
+            tests:
+              - not_null
+              - unique
       - name: sales
         identifier: raw_gz_sales
         description: sales of green weez
@@ -26,7 +29,10 @@ sources:
           - name: quantity
             description: quantity of sale 
           - name: product_id
-            description: id of product        
+            description: id of product
+            tests:
+              - not_null
+              - unique       
       - name: ship
         identifier: raw_gz_ship
         description: shipping datas
@@ -38,4 +44,7 @@ sources:
           - name: shipping_fee
             description: fee of shipping
           - name: ship_cost
-            description: cost of ship      
+            description: cost of ship
+            tests:
+              - not_null
+              - unique      
