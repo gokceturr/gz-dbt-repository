@@ -12,15 +12,13 @@ renamed as (
         * except(shipping_fee, shipping_fee_1, ship_cost)
 
         case
-      when SAFE_CAST(shipping_fee   AS FLOAT64) is not null
-        then SAFE_CAST(shipping_fee   AS FLOAT64)
-      when SAFE_CAST(shipping_fee_1 AS FLOAT64) is not null
-        then SAFE_CAST(shipping_fee_1 AS FLOAT64)
+      when safe_cast(shipping_fee   as float64) is not null then safe_cast(shipping_fee   as float64)
+      when safe_cast(shipping_fee_1 as float64) is not null then safe_cast(shipping_fee_1 as float64)
       else null
     end as shipping_fee,
 
    
-    CAST(ship_cost AS STRING) as ship_cost
+     safe_cast(ship_cost as float64) as ship_cost
   
        
 
