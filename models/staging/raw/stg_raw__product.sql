@@ -13,7 +13,8 @@ renamed as (
        case
       when products_id is not null then products_id
       else pdt_id
-    end as products_id,
+    end as products_id
+    from source
 
 )
 
