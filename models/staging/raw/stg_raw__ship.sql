@@ -15,9 +15,4 @@ source as (
 	from source
 )
 
- SELECT
-      *
-  FROM data-analytics-bootcamp-363212.gz_raw_data.raw_gz_ship
-  WHERE shipping_fee <> shipping_fee_1
-
-select * from renamed
+ SELECT * FROM renamed
