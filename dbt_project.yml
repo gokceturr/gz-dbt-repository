@@ -41,9 +41,3 @@ models:
     example:
       +materialized: table
 
-models:
-  +location: EU
-seeds:
-  +location: EU
-snapshots:
-  +location: EU
