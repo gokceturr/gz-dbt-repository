@@ -1,0 +1,55 @@
+version: 2
+
+sources:
+  - name: raw
+    database: white-cedar-470809-e4
+    schema: gz_raw_data
+    tables:
+      - name: product
+        identifier: raw_gz_product
+        description: products of green weez
+        columns:
+          - name: products_id
+            description: id of the product
+            tests: [unique, not_null]
+          - name: purchse_price
+            description: price of the purchase
+            tests: [not_null]
+
+      - name: sales
+        identifier: raw_gz_sales
+        description: sales of green weez
+        columns:
+          - name: date_date
+            description: date of sales
+          - name: orders_id
+            description: id of order
+            tests: [not_null]
+          - name: revenue
+            description: revenue of sale
+          - name: quantity
+            description: quantity of sale 
+          - name: pdt_id
+            description: id of product
+            tests: [not_null]
+        tests:
+          - unique:
+              column_name: "concat(cast(orders_id as string), '-', cast(pdt_id as string))"
+
+      - name: ship
+        identifier: raw_gz_ship
+        description: shipping datas
+        columns:
+          - name: orders_id
+            description: id of order
+            tests: [unique, not_null]
+          - name: logcost
+            description: cost of logistic
+          - name: shipping_fee
+            description: fee of shipping
+          - name: ship_cost
+            description: cost of ship
+            tests: [not_null]
+
+                      
+                        
