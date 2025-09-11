@@ -35,10 +35,10 @@ sources:
             tests:
                 - unique:
                    column_name: "concat(cast(orders_id as string), '-', cast(pdt_id as string))"
-                - dbt_utils.unique_combination_of_columns:
-                  combination_of_columns:
-                    - orders_id
-                    - pdt_id
+                - unique_combination_of_columns:
+                    combination_of_columns:
+                     - orders_id
+                     - pdt_id
                
       - name: ship
         identifier: raw_gz_ship
