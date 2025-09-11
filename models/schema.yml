@@ -7,30 +7,30 @@ sources:
     tables:
       - name: product
         identifier: raw_gz_product
-        description: products of green weez
+        description: "products of green weez"
         columns:
           - name: products_id
-            description: id of the product
+            description: "id of the product"
             tests: [unique, not_null]
           - name: purchse_price
-            description: price of the purchase
+            description: "price of the purchase"
             tests: [not_null]
 
       - name: sales
         identifier: raw_gz_sales
-        description: sales of green weez
+        description: "sales of green weez"
         columns:
           - name: date_date
-            description: date of sales
+            description: "date of sales"
           - name: orders_id
-            description: id of order
+            description: "id of order"
             tests: [not_null]
           - name: revenue
-            description: revenue of sale
+            description: "revenue of sale"
           - name: quantity
-            description: quantity of sale 
+            description: "quantity of sale"
           - name: pdt_id
-            description: id of product
+            description: "id of product"
             tests: [not_null]
         tests:
           - unique:
@@ -38,29 +38,31 @@ sources:
 
       - name: ship
         identifier: raw_gz_ship
-        description: shipping datas
+        description: "shipping datas"
         columns:
           - name: orders_id
-            description: id of order
+            description: "id of order"
             tests: [unique, not_null]
           - name: logcost
-            description: cost of logistic
+            description: "cost of logistic"
           - name: shipping_fee
-            description: fee of shipping
+            description: "fee of shipping"
           - name: ship_cost
-            description: cost of ship
+            description: "cost of ship"
             tests: [not_null]
 
       - name: google
         identifier: raw_gz_adwords
-        description: google ads datas
+        description: "google ads datas"
         tests:
           - dbt_utils.unique_combination_of_columns:
-          combination_of_columns: ['date_date','campaign_key']
+              combination_of_columns:
+                - date_date
+                - campaign_key
         columns:
           - name: date_date
-        description: "Kayıt tarihi (gün)."
-        tests: [not_null]
+            description: "Kayıt tarihi (gün)."
+            tests: [not_null]
           - name: campaign_key
             description: "Kampanyayı benzersiz tanımlayan anahtar."
             tests: [not_null]
@@ -80,100 +82,106 @@ sources:
             tests: [not_null]
           - name: click
             description: "Tıklama sayısı."
-            tests: [not_null]           
+            tests: [not_null]
 
       - name: bing
         identifier: raw_gz_bing
-        description: bing datas
+        description: "bing datas"
         tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns: ['date_date','campaign_key']
-    columns:
-      - name: date_date
-        description: "Kayıt tarihi (gün)."
-        tests: [not_null]
-      - name: campaign_key
-        description: "Kampanya anahtarı."
-        tests: [not_null]
-      - name: paid_source
-        description: "Kaynak/platform etiketi."
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['bing']
-      - name: camPGN_name
-        description: "Kampanya adı."
-      - name: ads_cost
-        description: "Reklam harcaması (FLOAT64)."
-        tests: [not_null]
-      - name: impression
-        description: "Gösterim sayısı."
-        tests: [not_null]
-      - name: click
-        description: "Tıklama sayısı."
-        tests: [not_null]
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - date_date
+                - campaign_key
+        columns:
+          - name: date_date
+            description: "Kayıt tarihi (gün)."
+            tests: [not_null]
+          - name: campaign_key
+            description: "Kampanya anahtarı."
+            tests: [not_null]
+          - name: paid_source
+            description: "Kaynak/platform etiketi."
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['bing']
+          - name: camPGN_name
+            description: "Kampanya adı."
+          - name: ads_cost
+            description: "Reklam harcaması (FLOAT64)."
+            tests: [not_null]
+          - name: impression
+            description: "Gösterim sayısı."
+            tests: [not_null]
+          - name: click
+            description: "Tıklama sayısı."
+            tests: [not_null]
 
       - name: criteo
         identifier: raw_gz_criteo
-        description: criteo data
+        description: "criteo data"
         tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns: ['date_date','campaign_key']
-    columns:
-      - name: date_date
-        description: "Kayıt tarihi (gün)."
-        tests: [not_null]
-      - name: campaign_key
-        description: "Kampanya anahtarı."
-        tests: [not_null]
-      - name: paid_source
-        description: "Kaynak/platform etiketi."
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['criteo']
-      - name: camPGN_name
-        description: "Kampanya adı."
-      - name: ads_cost
-        description: "Reklam harcaması (FLOAT64)."
-        tests: [not_null]
-      - name: impression
-        description: "Gösterim sayısı."
-        tests: [not_null]
-      - name: click
-        description: "Tıklama sayısı."
-        tests: [not_null]
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - date_date
+                - campaign_key
+        columns:
+          - name: date_date
+            description: "Kayıt tarihi (gün)."
+            tests: [not_null]
+          - name: campaign_key
+            description: "Kampanya anahtarı."
+            tests: [not_null]
+          - name: paid_source
+            description: "Kaynak/platform etiketi."
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['criteo']
+          - name: camPGN_name
+            description: "Kampanya adı."
+          - name: ads_cost
+            description: "Reklam harcaması (FLOAT64)."
+            tests: [not_null]
+          - name: impression
+            description: "Gösterim sayısı."
+            tests: [not_null]
+          - name: click
+            description: "Tıklama sayısı."
+            tests: [not_null]
 
       - name: facebook
         identifier: raw_gz_facebook
-        description: facebook datas
+        description: "facebook datas"
         tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns: ['date_date','campaign_key']
-    columns:
-      - name: date_date
-        description: "Kayıt tarihi (gün)."
-        tests: [not_null]
-      - name: campaign_key
-        description: "Kampanya anahtarı."
-        tests: [not_null]
-      - name: paid_source
-        description: "Kaynak/platform etiketi."
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['facebook','meta']   # sende 'meta' da olabilir
-      - name: camPGN_name
-        description: "Kampanya adı."
-      - name: ads_cost
-        description: "Reklam harcaması (FLOAT64)."
-        tests: [not_null]
-      - name: impression
-        description: "Gösterim sayısı."
-        tests: [not_null]
-      - name: click
-        description: "Tıklama sayısı."
-        tests: [not_null]      
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - date_date
+                - campaign_key
+        columns:
+          - name: date_date
+            description: "Kayıt tarihi (gün)."
+            tests: [not_null]
+          - name: campaign_key
+            description: "Kampanya anahtarı."
+            tests: [not_null]
+          - name: paid_source
+            description: "Kaynak/platform etiketi."
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['facebook', 'meta']
+          - name: camPGN_name
+            description: "Kampanya adı."
+          - name: ads_cost
+            description: "Reklam harcaması (FLOAT64)."
+            tests: [not_null]
+          - name: impression
+            description: "Gösterim sayısı."
+            tests: [not_null]
+          - name: click
+            description: "Tıklama sayısı."
+            tests: [not_null]
 
 
 
