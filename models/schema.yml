@@ -34,11 +34,7 @@ sources:
             description: id of product
             tests:
                 - unique:
-                   column_name: "concat(cast(orders_id as string), '-', cast(pdt_id as string))"
-                - unique_combination_of_columns:
-                    combination_of_columns:
-                     - orders_id
-                     - pdt_id
+                    column_name: "{{ pk_sales() }}"
                
       - name: ship
         identifier: raw_gz_ship

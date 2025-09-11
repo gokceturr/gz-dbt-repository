@@ -1,7 +1,3 @@
-select
-  {{ combination_of_columns | join(', ') }}
-from {{ model }}
-group by {{ combination_of_columns | join(', ') }}
-having count(*) > 1
-
-{% endtest %}
+{% macro pk_sales() -%}
+  concat(cast(orders_id as string), '-', cast(pdt_id as string))
+{%- endmacro %}
