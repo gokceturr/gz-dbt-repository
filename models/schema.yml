@@ -54,18 +54,126 @@ sources:
       - name: google
         identifier: raw_gz_adwords
         description: google ads datas
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: ['date_date','campaign_key']
+        columns:
+          - name: date_date
+        description: "Kayıt tarihi (gün)."
+        tests: [not_null]
+          - name: campaign_key
+            description: "Kampanyayı benzersiz tanımlayan anahtar."
+            tests: [not_null]
+          - name: paid_source
+            description: "Kaynak/platform etiketi."
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['google']
+          - name: camPGN_name
+            description: "Kampanya adı (ham kaynaktaki ad)."
+          - name: ads_cost
+            description: "Reklam harcaması (FLOAT64'e dönüştürülmüş)."
+            tests: [not_null]
+          - name: impression
+            description: "Gösterim sayısı."
+            tests: [not_null]
+          - name: click
+            description: "Tıklama sayısı."
+            tests: [not_null]           
 
       - name: bing
         identifier: raw_gz_bing
         description: bing datas
+        tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: ['date_date','campaign_key']
+    columns:
+      - name: date_date
+        description: "Kayıt tarihi (gün)."
+        tests: [not_null]
+      - name: campaign_key
+        description: "Kampanya anahtarı."
+        tests: [not_null]
+      - name: paid_source
+        description: "Kaynak/platform etiketi."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['bing']
+      - name: camPGN_name
+        description: "Kampanya adı."
+      - name: ads_cost
+        description: "Reklam harcaması (FLOAT64)."
+        tests: [not_null]
+      - name: impression
+        description: "Gösterim sayısı."
+        tests: [not_null]
+      - name: click
+        description: "Tıklama sayısı."
+        tests: [not_null]
 
       - name: criteo
         identifier: raw_gz_criteo
         description: criteo data
+        tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: ['date_date','campaign_key']
+    columns:
+      - name: date_date
+        description: "Kayıt tarihi (gün)."
+        tests: [not_null]
+      - name: campaign_key
+        description: "Kampanya anahtarı."
+        tests: [not_null]
+      - name: paid_source
+        description: "Kaynak/platform etiketi."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['criteo']
+      - name: camPGN_name
+        description: "Kampanya adı."
+      - name: ads_cost
+        description: "Reklam harcaması (FLOAT64)."
+        tests: [not_null]
+      - name: impression
+        description: "Gösterim sayısı."
+        tests: [not_null]
+      - name: click
+        description: "Tıklama sayısı."
+        tests: [not_null]
 
       - name: facebook
         identifier: raw_gz_facebook
-        description: facebook datas      
+        description: facebook datas
+        tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: ['date_date','campaign_key']
+    columns:
+      - name: date_date
+        description: "Kayıt tarihi (gün)."
+        tests: [not_null]
+      - name: campaign_key
+        description: "Kampanya anahtarı."
+        tests: [not_null]
+      - name: paid_source
+        description: "Kaynak/platform etiketi."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['facebook','meta']   # sende 'meta' da olabilir
+      - name: camPGN_name
+        description: "Kampanya adı."
+      - name: ads_cost
+        description: "Reklam harcaması (FLOAT64)."
+        tests: [not_null]
+      - name: impression
+        description: "Gösterim sayısı."
+        tests: [not_null]
+      - name: click
+        description: "Tıklama sayısı."
+        tests: [not_null]      
 
 
 
