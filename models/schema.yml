@@ -6,7 +6,7 @@ sources:
     schema: gz_raw_data
 
     tables:
-      # ---------------- PRODUCT ----------------
+      
       - name: product
         identifier: raw_gz_product
         description: "products of green weez"
@@ -18,7 +18,7 @@ sources:
             description: "price of the purchase"
             tests: [not_null]
 
-      # ---------------- SALES ----------------
+      
       - name: sales
         identifier: raw_gz_sales
         description: "sales of green weez"
@@ -39,7 +39,7 @@ sources:
           - unique:
               column_name: "concat(cast(orders_id as string), '-', cast(pdt_id as string))"
 
-      # ---------------- SHIP ----------------
+     
       - name: ship
         identifier: raw_gz_ship
         description: "shipping datas"
@@ -55,7 +55,7 @@ sources:
             description: "cost of ship"
             tests: [not_null]
 
-      # ---------------- GOOGLE ADS ----------------
+      
       - name: google
         identifier: raw_gz_adwords
         description: "google ads datas"
@@ -82,7 +82,7 @@ sources:
           - name: click
             description: "Tıklama sayısı."
 
-      # ---------------- BING ADS ----------------
+      
       - name: bing
         identifier: raw_gz_bing
         description: "bing datas"
@@ -109,7 +109,7 @@ sources:
           - name: click
             description: "Tıklama sayısı."
 
-      # ---------------- CRITEO ----------------
+     
       - name: criteo
         identifier: raw_gz_criteo
         description: "criteo data"
@@ -136,7 +136,7 @@ sources:
           - name: click
             description: "Tıklama sayısı."
 
-      # ---------------- FACEBOOK ADS ----------------
+      
       - name: facebook
         identifier: raw_gz_facebook
         description: "facebook datas"
@@ -162,3 +162,14 @@ sources:
             description: "Gösterim sayısı."
           - name: click
             description: "Tıklama sayısı."
+      - name: finance_campaigns_day
+        description: "global kpi"
+        columns:
+          - name: ads_margin
+            description: "operational_margin - ads_cost"
+            tests:
+              - not_null
+          - name: average_basket
+            description: "her gün için ortalama sepet tutarı"
+            tests:
+            - not_null
