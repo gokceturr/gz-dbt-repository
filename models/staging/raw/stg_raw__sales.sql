@@ -22,5 +22,5 @@ with
       concat(cast(orders_id as string), '-', cast(products_id as string)) as pk_sales
     from dedup
   )
-select * from final;
+select * from final
 
