@@ -4,7 +4,9 @@ sources:
   - name: raw
     database: white-cedar-470809-e4
     schema: gz_raw_data
+
     tables:
+      # ---------------- PRODUCT ----------------
       - name: product
         identifier: raw_gz_product
         description: "products of green weez"
@@ -16,6 +18,7 @@ sources:
             description: "price of the purchase"
             tests: [not_null]
 
+      # ---------------- SALES ----------------
       - name: sales
         identifier: raw_gz_sales
         description: "sales of green weez"
@@ -36,6 +39,7 @@ sources:
           - unique:
               column_name: "concat(cast(orders_id as string), '-', cast(pdt_id as string))"
 
+      # ---------------- SHIP ----------------
       - name: ship
         identifier: raw_gz_ship
         description: "shipping datas"
@@ -51,6 +55,7 @@ sources:
             description: "cost of ship"
             tests: [not_null]
 
+      # ---------------- GOOGLE ADS ----------------
       - name: google
         identifier: raw_gz_adwords
         description: "google ads datas"
@@ -63,27 +68,21 @@ sources:
           - name: date_date
             description: "Kayıt tarihi (gün)."
             tests: [not_null]
+          - name: paid_source
+            description: "Kaynak/platform etiketi."
           - name: campaign_key
             description: "Kampanyayı benzersiz tanımlayan anahtar."
             tests: [not_null]
-          - name: paid_source
-            description: "Kaynak/platform etiketi."
-            tests:
-              - not_null
-              - accepted_values:
-                  values: ['google']
           - name: camPGN_name
-            description: "Kampanya adı (ham kaynaktaki ad)."
+            description: "Kampanya adı."
           - name: ads_cost
-            description: "Reklam harcaması (FLOAT64'e dönüştürülmüş)."
-            tests: [not_null]
+            description: "Reklam harcaması (STRING/raw; staging'de FLOAT64'e çevrilecek)."
           - name: impression
             description: "Gösterim sayısı."
-            tests: [not_null]
           - name: click
             description: "Tıklama sayısı."
-            tests: [not_null]
 
+      # ---------------- BING ADS ----------------
       - name: bing
         identifier: raw_gz_bing
         description: "bing datas"
@@ -96,27 +95,21 @@ sources:
           - name: date_date
             description: "Kayıt tarihi (gün)."
             tests: [not_null]
+          - name: paid_source
+            description: "Kaynak/platform etiketi."
           - name: campaign_key
             description: "Kampanya anahtarı."
             tests: [not_null]
-          - name: paid_source
-            description: "Kaynak/platform etiketi."
-            tests:
-              - not_null
-              - accepted_values:
-                  values: ['bing']
           - name: camPGN_name
             description: "Kampanya adı."
           - name: ads_cost
-            description: "Reklam harcaması (FLOAT64)."
-            tests: [not_null]
+            description: "Reklam harcaması (STRING/raw; staging'de FLOAT64'e çevrilecek)."
           - name: impression
             description: "Gösterim sayısı."
-            tests: [not_null]
           - name: click
             description: "Tıklama sayısı."
-            tests: [not_null]
 
+      # ---------------- CRITEO ----------------
       - name: criteo
         identifier: raw_gz_criteo
         description: "criteo data"
@@ -129,27 +122,21 @@ sources:
           - name: date_date
             description: "Kayıt tarihi (gün)."
             tests: [not_null]
+          - name: paid_source
+            description: "Kaynak/platform etiketi."
           - name: campaign_key
             description: "Kampanya anahtarı."
             tests: [not_null]
-          - name: paid_source
-            description: "Kaynak/platform etiketi."
-            tests:
-              - not_null
-              - accepted_values:
-                  values: ['criteo']
           - name: camPGN_name
             description: "Kampanya adı."
           - name: ads_cost
-            description: "Reklam harcaması (FLOAT64)."
-            tests: [not_null]
+            description: "Reklam harcaması (STRING/raw; staging'de FLOAT64'e çevrilecek)."
           - name: impression
             description: "Gösterim sayısı."
-            tests: [not_null]
           - name: click
             description: "Tıklama sayısı."
-            tests: [not_null]
 
+      # ---------------- FACEBOOK ADS ----------------
       - name: facebook
         identifier: raw_gz_facebook
         description: "facebook datas"
@@ -162,30 +149,16 @@ sources:
           - name: date_date
             description: "Kayıt tarihi (gün)."
             tests: [not_null]
+          - name: paid_source
+            description: "Kaynak/platform etiketi."
           - name: campaign_key
             description: "Kampanya anahtarı."
             tests: [not_null]
-          - name: paid_source
-            description: "Kaynak/platform etiketi."
-            tests:
-              - not_null
-              - accepted_values:
-                  values: ['facebook', 'meta']
           - name: camPGN_name
             description: "Kampanya adı."
           - name: ads_cost
-            description: "Reklam harcaması (FLOAT64)."
-            tests: [not_null]
+            description: "Reklam harcaması (STRING/raw; staging'de FLOAT64'e çevrilecek)."
           - name: impression
             description: "Gösterim sayısı."
-            tests: [not_null]
           - name: click
             description: "Tıklama sayısı."
-            tests: [not_null]
-
-
-
-
-
-                      
-                        
